@@ -32,6 +32,22 @@ def linear_search(unordered_numbers, searched_number):
     output["count"] = count
     return output
 
+def pattern_search(sequence, pattern):
+    positions = []
+    for index in range(len(sequence)-len(pattern)+1):
+        subsequence = sequence[index:(index + len(pattern))]
+        same  = True
+        for letter_subsequence, letter_pattern in zip(subsequence, pattern):
+            if letter_subsequence != letter_pattern:
+                same = False
+                break
+            if same:
+                positions.append(index)
+    return positions
+
+print(pattern_search("ACCCCTG", "CCC"))
+
+
 
 
 def main():
